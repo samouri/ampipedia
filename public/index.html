@@ -1,0 +1,92 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <title>Hello, AMPs</title>
+    <link rel="canonical" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> 
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+      .header {
+        height: 50px;
+        background-color: #24292e;
+      }
+      .header h1 {
+        margin: 0;
+        padding-top: 5px;
+        margin-left: 20px;
+        color: white;
+      }
+      .search {
+        margin-top: 40px;
+        margin-left: 40px;
+      }
+      .search {
+        width: 300px;
+        vertical-align: middle;
+        white-space: nowrap;
+        position: relative;
+      }
+      .search .icon {
+        position: absolute;
+        margin-left: 17px;
+        margin-top: 17px;
+      }
+      /* .search input:hover, .search input:focus, .search input:active {
+        outline: none;
+        background: white;
+      } */
+      .search input {
+        width: 600px;
+        height: 50px;
+        font-size: 10pt;
+        float: left;
+        color: #63717f;
+        padding-left: 45px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px; 
+      }
+      .wikipedia_text {
+        clear:both;
+        margin-left: 40px; 
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <amp-state id="query">
+        <script type="application/json">
+          ""
+        </script>
+      </amp-state>
+    <div class="header">
+      <h1>AMPipedia</h1>
+    </div>
+    <div class="search">
+      <span class="icon"><i class="fa fa-search"></i></span>
+      <input 
+        type="search" 
+        placeholder="Search Wikipedia..." 
+        autofocus
+        on="change:AMP.setState({'query': event.value })"
+      />
+    </div>
+    <amp-list
+      width="auto"
+      height="100"
+      layout="fixed-height"
+      [src]="query.length == 0 ? null : '/api/wiki/' + query"
+      class="wikipedia_text"
+    >
+      <template type="amp-mustache">
+        {{{extract_html}}}
+      </template>
+    </amp-list>
+  </body>
+</html>

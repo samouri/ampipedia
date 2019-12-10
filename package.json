@@ -1,0 +1,32 @@
+{
+  "name": "ampipedia",
+  "version": "0.1.0",
+  "description": "amp-based wikipedia reader",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samouri/ampipedia.git"
+  },
+  "keywords": [
+    "amp",
+    "wikipedia"
+  ],
+  "author": "samouri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samouri/ampipedia/issues"
+  },
+  "prettier": {
+    "semi": false
+  },
+  "homepage": "https://github.com/samouri/ampipedia#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.1"
+  }
+}
